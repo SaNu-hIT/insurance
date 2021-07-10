@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="data"
+            type="com.ilaftalkful.mobileonthego.model.family.FamilyParameter" />
+
+        <variable
+            name="viewModel"
+            type="com.ilaftalkful.mobileonthego.view.family.EditFamilyListViewModel" />
+
+        <variable
+            name="fragment"
+            type="com.ilaftalkful.mobileonthego.view.family.EditFamilyListFragment" />
+
+        <variable
+            name="error"
+            type="com.ilaftalkful.mobileonthego.model.family.FamilyErros" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="2dp">
+
+        <LinearLayout
+            android:id="@+id/linearLayout6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/diemn_10"
+            android:background="@drawable/white_curve"
+            android:orientation="vertical"
+            android:padding="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/dmsans_bold"
+                    android:text="@string/add_family_details"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/dimen_16" />
+
+
+                <ImageView
+
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:src="@drawable/ic_baseline_arrow_drop_down_24" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_16"
+                        android:textColorHint="@color/colorPrimary"
+                        android:theme="@style/travel_claim_style"
+                        app:errorIconTint="@color/error_color"
+                        app:errorText="@{error.MFullNameError}"
+                        app:errorTextColor="@color/error_color"
+                        app:hintTextColor="@color/colorPrimary">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/name"
+                            android:inputType="textCapSentences"
+                            android:text="@={viewModel.mfullName}" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_16"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textInputLayout3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/dmsans_reguler"
+                            android:text="@string/relation"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="12dp" />
+
+                        <Spinner
+                            android:id="@+id/relation_spinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="40dp"
+                            android:entries="@{viewModel.relationList}"
+                            android:selectedItemPosition="@={viewModel.selectedAddFamilyrelationId}"
+                            android:theme="@style/spinnerStyle" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="@color/black" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="vertical">
+
+                        <!--                        <TextView-->
+                        <!--                            android:id="@+id/textView7"-->
+                        <!--                            android:layout_width="wrap_content"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            android:layout_weight="1"-->
+                        <!--                            android:fontFamily="@font/dmsans_reguler"-->
+                        <!--                            android:text="@string/date_of_birth"-->
+                        <!--                            android:textColor="@color/colorPrimary" />-->
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/txt_layout_date_sick"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="8dp"
+                            android:textColorHint="@color/colorPrimary"
+                            android:theme="@style/travel_claim_style"
+                            app:errorIconTint="@color/error_color"
+                            app:errorText="@{error.mDOBNameError}"
+                            app:errorTextColor="@color/error_color"
+                            app:hintTextColor="@color/colorPrimary"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/txt_layout_type_of_claim">
+
+                            <EditText
+                                android:id="@+id/textDateOfBirth"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:clickable="true"
+                                android:drawableStart="@drawable/ic_calender"
+                                android:drawableTint="@color/colorPrimary"
+                                android:focusable="false"
+                                android:hint="@string/date_of_birth"
+                                android:onClick="@{(v)->fragment.onDateOfSicknessClicked(v,data)}"
+                                android:text="@={viewModel.mDOB}" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_16"
+                        android:textColorHint="@color/colorPrimary"
+                        android:theme="@style/travel_claim_style"
+                        app:errorIconTint="@color/error_color"
+                        app:errorText="@{error.MPassportNumberError}"
+                        app:errorTextColor="@color/error_color"
+                        app:hintTextColor="@color/colorPrimary">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/passport_number"
+                            android:maxLength="13"
+                            android:text="@={viewModel.mpassportNumber}" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/dimen_16"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
+                            android:background="@drawable/button_margin_primary_bg_white"
+                            android:fontFamily="@font/dmsans_bold"
+                            android:gravity="center"
+                            android:onClick="@{(v)->fragment.onCancelClick(v)}"
+                            android:padding="15dp"
+                            android:text="@string/cancel"
+                            tools:ignore="HardcodedText" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
+                            android:background="@drawable/primary_curve"
+                            android:fontFamily="@font/dmsans_bold"
+                            android:gravity="center"
+                            android:onClick="@{(v)->fragment.addFamilyCreate(v,error,data)}"
+                            android:padding="15dp"
+                            android:text="@string/save"
+                            android:textAllCaps="false"
+                            android:textColor="@color/border_white"
+                            tools:ignore="HardcodedText" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

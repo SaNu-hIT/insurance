@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/products_fragment"
+        android:icon="@drawable/product_selector"
+        android:title="@string/products"
+        />
+    <item
+        android:icon="@drawable/contact_selector"
+        android:id="@+id/contact_fragment"
+        android:title="@string/contact"
+        />
+    <item
+        android:id="@+id/mylogs_fragment"
+        android:icon="@drawable/mylogs_selector"
+        android:title="@string/my_logs"
+        />
+    <item
+        android:id="@+id/profile_fragment"
+        android:icon="@drawable/profile_selector"
+        android:title="@string/profile"
+        />
+</menu>

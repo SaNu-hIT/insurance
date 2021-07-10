@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+           <LinearLayout
+        android:layout_width="match_parent"
+        android:background="@drawable/bottum_curve"
+        android:orientation="vertical"
+        android:paddingBottom="15dp"
+        android:layout_height="wrap_content">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:background="@color/colorPrimary"
+            android:orientation="horizontal"
+            android:layout_margin="16dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textView"
+                style="@style/tittileText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/dmsans_bold"
+                android:text="@string/travel_claims"
+                />
+
+            <Switch
+                android:id="@+id/textView2"
+                android:layout_weight=".5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
+
+        </LinearLayout>
+
+
+               <TextView
+                   style="@style/tittileTextPrimary"
+                   android:layout_width="wrap_content"
+                   android:gravity="center"
+                   android:paddingRight="20dp"
+                   android:paddingLeft="20dp"
+                   android:paddingTop="10dp"
+                   android:paddingBottom="10dp"
+                   android:background="@drawable/white_curve"
+                   android:layout_height="wrap_content" android:layout_gravity="center"
+                   android:fontFamily="@font/dmsans_bold"
+                   android:text="@string/available_24hrs_7_days"
+                   />
+
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:text="@string/comtact_no"
+                   style="@style/tittileText"
+                   android:textColor="@color/white"
+                   android:layout_marginTop="20dp"
+                   android:layout_marginLeft="20dp"
+                   android:layout_height="wrap_content"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+android:layout_marginTop="10dp"
+            android:padding="10dp"
+
+            android:orientation="horizontal"
+
+            android:layout_margin="20dp"
+            android:layout_height="wrap_content">
+
+
+
+
+
+
+
+
+        </LinearLayout>
+           </LinearLayout>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:background="@color/white"
+            android:layout_height="match_parent">
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="wrap_content"/>
+        </ScrollView>
+
+
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

@@ -1,0 +1,613 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="viewModel"
+            type="com.ilaftalkful.mobileonthego.viewmodel.ProductsViewModel" />
+        <variable
+            name="fragment"
+            type="com.ilaftalkful.mobileonthego.view.home.ProductsFragment" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/teal_200"
+    tools:context=".view.home.ProductsFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bottum_curve"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:background="@color/colorPrimary"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/textView"
+                    style="@style/headerTextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/dmsans_bold"
+                    android:layout_weight="1"
+                    android:layout_marginStart="10dp"
+                    android:letterSpacing=".3"
+                    android:textAlignment="viewStart"
+                    android:text="@string/ilaf"
+                    />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/guideline3"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/icon_home"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="@{(v)->fragment.onHomeClicked(v)}"
+                        android:padding="10dp"
+                        android:src="@drawable/ic_baseline_home_24"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/txt_en"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_weight="1"
+                        android:background="@{viewModel.isENS?@drawable/bg_language:null}"
+                        android:fontFamily="@font/dmsans_bold"
+                        android:gravity="center"
+                        android:onClick="@{(v)->fragment.onEnglishClicked(v)}"
+                        android:padding="10dp"
+                        android:text="@string/en"
+                        android:textColor="@{viewModel.isENS?@color/black:@color/white}"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/txt_ar"
+                        app:layout_constraintStart_toEndOf="@+id/icon_home"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/txt_ar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_weight="1"
+                        android:background="@{(!viewModel.isENS)?@drawable/bg_language:null}"
+                        android:fontFamily="@font/dmsans_bold"
+                        android:gravity="center"
+                        android:onClick="@{(v)->fragment.onArabicClicked(v)}"
+                        android:padding="10dp"
+                        android:text="@string/ar"
+                        android:textColor="@{(!viewModel.isENS)?@color/black:@color/white}"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/icon_bell"
+                        app:layout_constraintStart_toEndOf="@+id/txt_en"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <ImageView
+                        android:id="@+id/icon_bell"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:padding="10dp"
+                        android:onClick="@{(v)->fragment.onNotificationClicked(v)}"
+                        android:src="@drawable/ic_baseline_notifications_24"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/txt_ar"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:visibility="@{!viewModel.isValidUser()?View.VISIBLE:View.GONE}">
+
+                <TextView
+                    android:id="@+id/login_guest_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/dmsans_bold"
+                    android:text="@string/loged_in_as_guest"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    style="@style/tittileText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:background="@drawable/accent_button_bg"
+                    android:fontFamily="@font/dmsans_bold"
+                    android:onClick="@{(v)->fragment.onRegisterOrLoginClicked(v)}"
+                    android:padding="15dp"
+                    android:text="@string/login_or_register"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/login_guest_text"
+                    app:layout_constraintTop_toBottomOf="@+id/login_guest_text" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/accent_button_bg"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:visibility="@{(viewModel.isValidUser() &amp;&amp;  viewModel.data.userDetails!=null)?View.VISIBLE:View.GONE}">
+
+                <ImageView
+                    android:id="@+id/logo"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_margin="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="20dp"
+                    android:src="@drawable/ic_platinum"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView16"
+                    style="@style/tittileText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:fontFamily="@font/dmsans_bold"
+                    android:maxLines="1"
+                    android:textAlignment="viewStart"
+                    android:inputType="textCapWords"
+                    android:text="@{ viewModel.data.userDetails.nameFirst}"
+                    app:layout_constraintEnd_toStartOf="@+id/iv_back_arrow"
+                    app:layout_constraintStart_toEndOf="@id/logo"
+                    app:layout_constraintTop_toTopOf="@id/logo" />
+
+                <TextView
+                    android:id="@+id/textView15"
+                    style="@style/slimText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:fontFamily="@font/dmsans_bold"
+                    android:maxLines="1"
+                    android:textAlignment="viewStart"
+                    android:text="@{`Civil ID : `+  viewModel.civiliId.trim()}"
+                    android:visibility="@{ viewModel.dashBoardResponse.userDetails!=null?View.VISIBLE:View.GONE}"
+                    app:layout_constraintBottom_toBottomOf="@+id/logo"
+                    app:layout_constraintEnd_toStartOf="@+id/iv_back_arrow"
+                    app:layout_constraintStart_toEndOf="@id/logo"
+                    app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+                <ImageView
+                    android:id="@+id/iv_back_arrow"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="5dp"
+                    android:padding="10dp"
+                    android:onClick="@{(v)->fragment.onClickProfile(v)}"
+                    android:src="@drawable/ic_arrow_right"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView15"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView16" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:background="@color/white"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    app:cardCornerRadius="14dp"
+                    android:layout_margin="16dp"
+                    android:visibility="@{viewModel.isTravelActive?View.VISIBLE:View.GONE}"
+                    android:background="@color/colorPrimary"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:background="@color/colorPrimary"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:drawableLeft="@drawable/ic_travel"
+                            android:drawableStart="@drawable/ic_travel"
+                            android:textColor="@color/white"
+                            android:layout_margin="15dp"
+                            android:gravity="center"
+                            android:fontFamily="@font/dmsans_reguler"
+                            android:drawablePadding="10dp"
+                            android:text="@string/travel_insurence"
+                            android:layout_height="wrap_content"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:background="@color/colorPrimary"
+                            android:orientation="horizontal"
+
+                            android:layout_height="wrap_content">
+
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_weight="1"
+                                android:text="@string/buy_insurence"
+                                android:onClick="@{(v)->fragment.onTravelInsuranceClicked(v)}"
+                                android:layout_marginBottom="15dp"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginRight="15dp"
+                                android:fontFamily="@font/dmsans_bold"
+                                android:textAllCaps="false"
+                                android:textAlignment="center"
+                                android:padding="15dp"
+                                android:textColor="@color/colorPrimary"
+                                android:background="@drawable/white_curve"
+                                android:layout_height="wrap_content">
+
+                            </TextView>
+
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:textAllCaps="false"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="15dp"
+                                android:layout_marginLeft="15dp"
+                                android:fontFamily="@font/dmsans_bold"
+                                android:layout_marginRight="15dp"
+                                android:text="@string/claims"
+                                android:onClick="@{(v)->fragment.onTravelClaimClicked(v)}"
+                                android:layout_weight="1"
+                                android:textAlignment="center"
+                                android:padding="15dp"
+                                android:textColor="@color/colorPrimary"
+                                android:background="@drawable/white_curve"
+                                >
+                            </TextView>
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+
+                </androidx.cardview.widget.CardView>
+
+
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    app:cardCornerRadius="14dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:visibility="@{viewModel.isFgaActive()?View.VISIBLE:View.GONE}"
+                    android:background="@color/colorPrimary"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:background="@color/colorPrimary"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:drawableLeft="@drawable/ic_motor"
+                            android:drawableStart="@drawable/ic_motor"
+                            android:textColor="@color/white"
+                            android:gravity="center"
+                            android:layout_margin="15dp"
+                            android:drawablePadding="10dp"
+                            android:fontFamily="@font/dmsans_reguler"
+                            android:text="@string/motor_insurence"
+                            android:layout_height="wrap_content"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:background="@color/colorPrimary"
+                            android:orientation="horizontal"
+
+                            android:layout_height="wrap_content">
+
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_weight="1"
+                                android:text="@string/quote"
+                                android:textAlignment="center"
+                                android:padding="15dp"
+                                android:layout_marginBottom="15dp"
+                                android:onClick="@{(v)->fragment.onMotorInsuranceQouteClicked(v)}"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginRight="10dp"
+                                android:fontFamily="@font/dmsans_bold"
+                                android:textAllCaps="false"
+                                android:textColor="@color/colorPrimary"
+                                android:background="@drawable/white_curve"
+                                android:layout_height="wrap_content">
+
+                            </TextView>
+
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:textAllCaps="false"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="15dp"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginRight="10dp"
+                                android:onClick="@{(v)->fragment.onMotorInsuranceRenewClicked(v)}"
+                                android:text="@string/renew"
+                                android:textAlignment="center"
+                                android:padding="15dp"
+                                android:fontFamily="@font/dmsans_bold"
+                                android:layout_weight="1"
+                                android:textColor="@color/colorPrimary"
+                                android:background="@drawable/white_curve"
+                                />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:textAllCaps="false"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="15dp"
+                                android:layout_marginLeft="15dp"
+                                android:onClick="@{(v)->fragment.onMotorInsuranceClaimClicked(v)}"                     android:layout_marginRight="15dp"
+                                android:text="@string/claims"
+                                android:layout_weight="1"
+                                android:textAlignment="center"
+                                android:padding="15dp"
+                                android:fontFamily="@font/dmsans_bold"
+                                android:textColor="@color/colorPrimary"
+                                android:background="@drawable/white_curve"
+                                >
+                            </TextView>
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    app:cardCornerRadius="14dp"
+                    android:visibility="@{viewModel.isHealthActive()?View.VISIBLE:View.GONE}"
+                    android:layout_margin="16dp"
+                    android:background="@color/colorPrimary"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:background="@color/colorPrimary"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content">
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:drawableLeft="@drawable/ic_health"
+                            android:drawableStart="@drawable/ic_health"
+                            android:gravity="center"   android:textColor="@color/white"
+                            android:fontFamily="@font/dmsans_reguler"
+                            android:layout_margin="15dp"
+                            android:drawablePadding="10dp"
+                            android:text="@string/health_insurence"
+                            android:layout_height="wrap_content"/>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/colorPrimary"
+
+                            android:orientation="horizontal">
+
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginRight="15dp"
+                                android:layout_marginBottom="15dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/white_curve"
+                                android:fontFamily="@font/dmsans_bold"
+                                android:onClick="@{(v)->fragment.onHelthInsurenceCorpQouteClicked(v)}"
+                                android:padding="15dp"
+                                android:text="@string/corporate_qoutes"
+                                android:textAlignment="center"
+                                android:textAllCaps="false"
+                                android:textColor="@color/colorPrimary">
+
+                            </TextView>
+
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginRight="15dp"
+                                android:layout_marginBottom="15dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/white_curve"
+                                android:fontFamily="@font/dmsans_bold"
+                                android:onClick="@{(v)->fragment.onHelthInsurenceHospitalnetworkClicked(v)}"
+                                android:padding="15dp"
+                                android:text="@string/hospital_network"
+                                android:textAlignment="center"
+                                android:textAllCaps="false"
+                                android:textColor="@color/colorPrimary"></TextView>
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
+                            android:layout_marginBottom="15dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/white_curve"
+                            android:fontFamily="@font/dmsans_bold"
+                            android:onClick="@{(v)->fragment.onHelthInsurenceAssistForClameClicked(v)}"
+                            android:padding="15dp"
+                            android:text="@string/assistance_for_claim"
+                            android:textAlignment="center"
+                            android:textAllCaps="false"
+                            android:textColor="@color/colorPrimary" />
+
+                    </LinearLayout>
+
+
+
+                </androidx.cardview.widget.CardView>
+
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    app:cardCornerRadius="14dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:visibility="@{viewModel.isMarineActive()?View.VISIBLE:View.GONE}"
+                    android:background="@color/colorPrimary"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:background="@color/colorPrimary"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content">
+
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:background="@color/colorPrimary"
+                            android:orientation="horizontal"
+
+                            android:layout_height="wrap_content">
+
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_weight="1"
+                                android:text="@string/marine_insurence"
+                                android:maxLines="1"
+                                android:layout_marginBottom="15dp"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginRight="5dp"
+                                android:fontFamily="@font/dmsans_bold"
+                                android:layout_marginTop="15dp"
+                                android:onClick="@{(v)->fragment.onMarineClicked(v)}"
+                                android:textAllCaps="false"
+                                android:textAlignment="center"
+                                android:drawableLeft="@drawable/ic_marine"
+                                android:drawableStart="@drawable/ic_marine"
+                                android:paddingTop="15dp"
+                                android:paddingBottom="15dp"
+                                android:paddingLeft="10dp"
+                                android:textColor="@color/colorPrimary"
+                                android:background="@drawable/white_curve"
+                                android:layout_height="wrap_content"/>
+
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:textAllCaps="false"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="15dp"
+                                android:fontFamily="@font/dmsans_bold"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginRight="15dp"
+                                android:layout_marginTop="15dp"
+                                android:text="@string/fga_insurance"
+                                android:layout_weight="1"
+                                android:onClick="@{(v)->fragment.onFGAClicked(v)}"
+                                android:textAlignment="center"
+                                android:drawableLeft="@drawable/ic_fga"
+                                android:drawableStart="@drawable/ic_fga"
+                                android:padding="15dp"
+                                android:textColor="@color/colorPrimary"
+                                android:background="@drawable/white_curve"
+                                />
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+
+                </androidx.cardview.widget.CardView>
+
+
+
+
+            </LinearLayout>
+        </ScrollView>
+
+
+
+    </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

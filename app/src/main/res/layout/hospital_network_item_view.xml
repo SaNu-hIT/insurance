@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="data"
+            type="com.ilaftalkful.mobileonthego.model.health.hospital.HospitalNetwork" />
+    </data>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+   android:background="@drawable/white_curve"
+    android:layout_margin="@dimen/diemn_10"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="85dp"
+        android:layout_gravity="center"
+        android:src="@drawable/logo"
+
+
+        android:layout_height="85dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+>
+
+        <TextView
+            android:id="@+id/title_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{data.hospitalName}"
+            android:textAlignment="viewStart"
+            android:maxLines="1"
+            android:layout_margin="5dp"
+            android:textSize="15dp"
+            android:fontFamily="@font/dmsans_bold"
+            android:textColor="@color/colorPrimary"
+      />
+
+
+
+        <TextView
+            android:id="@+id/platinum_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="textStart"
+            android:maxLines="1"
+            android:textSize="18dp"
+            android:drawablePadding="5dp"
+            android:fontFamily="@font/dmsans_bold"
+            android:text="@{data.phoneNumber}"
+            android:layout_margin="5dp"
+            android:drawableTint="@color/colorPrimary"
+            android:drawableLeft="@drawable/ic_mobile_number"
+
+            android:textColor="@color/colorPrimary"
+         />
+
+        <TextView
+            android:id="@+id/gold_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:drawablePadding="5dp"   android:text="@{data.emailID}"
+            android:textColor="@color/colorPrimary"
+            android:textAlignment="center"
+            android:drawableTint="@color/colorPrimary"
+            android:drawableLeft="@drawable/ic_baseline_email_24"
+            android:maxLines="1"
+
+            android:fontFamily="@font/dmsans_bold"
+
+            android:layout_margin="5dp"
+             />
+
+
+
+    </LinearLayout>
+
+</LinearLayout>
+
+</layout>

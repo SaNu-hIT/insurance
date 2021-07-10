@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.ilaftalkful.mobileonthego.viewmodel.MotorRenewViewModel" />
+
+        <variable
+            name="fragment"
+            type="com.ilaftalkful.mobileonthego.view.motorinsurance.MotorRenewFragment" />
+        <variable
+            name="error"
+            type="com.ilaftalkful.mobileonthego.model.TravelClaimErrors" />
+        <variable
+            name="label"
+            type="String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/toolbar_view"
+            layout="@layout/toolbar_layout"
+            app:fragment="@{fragment}"
+            app:pageLabel="@{label}"
+            app:viewModel="@{viewModel}"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/text_color"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_view">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="20dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/dmsans_bold"
+                    android:text="@string/policy_number"
+                    android:textColor="@color/text_color_primary"
+                    android:textSize="14dp" />
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="50dp"
+                    style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                    android:id="@+id/spinner_policy_list"
+                    android:entries="@{viewModel.policiesList}"
+                    android:selectedItemPosition="@={viewModel.policyId}"
+                    android:theme="@style/claim_spinner" />
+             
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_16"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textfield.TextInputLayout
+
+                        android:theme="@style/Theme.App.Base.White"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:errorText="@{error.expiryDateError}"
+                        android:enabled="false"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/expirydate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@={viewModel.expiryDate}"
+                            android:hint="@string/expiry_date"
+                            android:drawableStart="@drawable/ic_calender"
+                            android:drawableTint="@color/colorPrimary"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_16"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/dmsans_bold"
+                        android:text="@string/car_type"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="14dp" />
+                   <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="50dp"
+                       style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                        android:id="@+id/car_type"
+                        android:entries="@{viewModel.carTypes}"
+                        android:selectedItemPosition="@={viewModel.selectCarType}"
+                        android:theme="@style/claim_spinner" />
+                    <!--<com.google.android.material.textfield.TextInputLayout
+
+                        android:theme="@style/Theme.App.Base.White"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:errorText="@{error.expiryDateError}"
+                        android:enabled="false"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/car_type"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@={viewModel.carType}"
+                            android:hint="@string/car_type" />
+                    </com.google.android.material.textfield.TextInputLayout>-->
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_16"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textfield.TextInputLayout
+
+                        android:theme="@style/Theme.App.Base.White"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:errorText="@{error.manufacturingYearError}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:enabled="false"
+                        app:layout_constraintStart_toStartOf="parent">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@={viewModel.manufacturingYear}"
+                            android:hint="@string/manufacturing_year" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_16"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/dmsans_bold"
+                        android:text="@string/renewal_plan"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="14dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="5dp"
+                        android:text="@{`KD  `+viewModel.amount}"
+                        android:fontFamily="@font/dmsans_bold"
+                                              android:textColor="@color/text_color_primary"
+                        android:textSize="14dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/gray_curve"
+                    android:orientation="vertical"
+                    android:padding="3dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:text="@string/additional_services"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="11dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="@dimen/diemn_10"
+                        android:padding="5dp">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <CheckBox
+                                android:layout_width="wrap_content"
+                                android:checked="@={viewModel.isHomeDeliver}"
+                                android:layout_height="wrap_content" />
+
+                            <TextView
+                                android:id="@+id/txt_home_deliver"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/dmsans_bold"
+                                android:text="@{viewModel.homeDelivery}"
+                                android:textColor="@color/text_color_primary"
+                                android:textSize="13dp" />
+
+                            <TextView
+                                android:id="@+id/txt_homedeliver_amount"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="5dp"
+                                android:fontFamily="@font/dmsans_bold"
+                                android:text="@{`KD  `+viewModel.deliveryAmount}"
+                                android:textColor="@color/text_color_primary" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <CheckBox
+                                android:layout_width="wrap_content"
+                                android:checked="@={viewModel.isUpgrade}"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:id="@+id/txt_upgrade"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/dmsans_bold"
+                                android:text="@{viewModel.upgarde}"
+                                android:textColor="@color/text_color_primary"
+                                android:textSize="13dp" />
+
+                            <TextView
+                                android:id="@+id/txt_upgrade_amount"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="5dp"
+                                android:fontFamily="@font/dmsans_bold"
+                                android:text="@{`KD  `+viewModel.upgradeAmount}"
+                                android:textColor="@color/text_color_primary" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <CheckBox
+                                android:layout_width="wrap_content"
+                                android:checked="@={viewModel.isLiability}"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:id="@+id/txt_liability"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/dmsans_bold"
+                                android:text="@{viewModel.liability}"
+                                android:textColor="@color/text_color_primary"
+                                android:textSize="13dp" />
+
+                            <TextView
+                                android:id="@+id/txt_liability_amount"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="5dp"
+                                android:fontFamily="@font/dmsans_bold"
+                                android:text="@{`KD  `+viewModel.liabilityAmount}"
+                                android:textColor="@color/text_color_primary" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:checked="@={viewModel.isTermsChecked}"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/dmsans_bold"
+                        android:text="@{viewModel.termsAndConditions}"
+                        android:textColor="@color/text_color_primary"
+                        android:textSize="13dp" />
+
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/dmsans_bold"
+                    android:text="@string/confirm_terms_and_conditions"
+                    android:visibility="@{viewModel.isVisible}"
+                    android:textColor="@color/text_color_primary"
+                    android:textSize="13dp" />
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:background="@drawable/bg_curved_top"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dimen_16"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/dmsans_bold"
+                    android:text="@string/total"
+                    android:textColor="@color/text_color_primary"
+                    android:textSize="18dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:fontFamily="@font/dmsans_bold"
+                    android:text="@{`KD `+ viewModel.totalAmount}"
+                    android:textColor="@color/text_color_primary"
+                    android:textSize="20dp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/primary_curve"
+                android:fontFamily="@font/dmsans_bold"
+                android:padding="15dp"
+                android:text="@string/renew_policy"
+                android:onClick="@{(v)->fragment.onRenewPolicy(v,error)}"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

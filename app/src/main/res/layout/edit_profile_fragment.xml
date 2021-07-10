@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.ilaftalkful.mobileonthego.viewmodel.EditProfileViewModel" />
+        <variable
+            name="fragment"
+            type="com.ilaftalkful.mobileonthego.view.editprofile.EditProfileFragment" />
+        <variable
+            name="label"
+            type="String" />
+    <variable
+        name="error"
+        type="com.ilaftalkful.mobileonthego.model.UserRegistrationErrors" />
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@color/colorPrimary">
+
+    <include
+        android:id="@+id/toolbar_view"
+        layout="@layout/toolbar_layout"
+        app:fragment="@{fragment}"
+        app:pageLabel="@{label}"
+        app:viewModel="@{viewModel}"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_view"
+        app:layout_constraintVertical_bias="1.0"
+        tools:context=".MainActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:textColorHint="@color/text_color"
+                android:theme="@style/Theme.App.Base"
+                app:errorText="@{error.nameError}"
+                app:errorTextColor="@color/error_color"
+                app:errorIconTint="@color/error_color"
+                app:hintTextColor="@color/text_color"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_name"
+                    android:drawablePadding="5dp"
+                    android:gravity="center|start"
+                    android:hint="@string/enter_your_name"
+                    android:inputType="textCapWords"
+                    android:text="@={viewModel.name}"
+                    android:textColor="@color/white" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:textColorHint="@color/text_color"
+                android:theme="@style/Theme.App.Base"
+                app:hintTextColor="@color/text_color"
+                app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
+                app:layout_constraintStart_toStartOf="@+id/textInputLayout"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
+
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_baseline_email_24"
+                    android:drawableLeft="@drawable/ic_baseline_email_24"
+                    android:drawablePadding="5dp"
+                    android:hint="@string/email"
+                    android:enabled="false"
+                    android:focusable="false"
+                    android:text="@={viewModel.email}"
+                    android:textColor="@color/white" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Spinner
+                android:id="@+id/spinner_view"
+                style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:clickable="false"
+                android:entries="@array/countryCodes"
+                android:theme="@style/ThemeSpinner"
+                app:layout_constraintBottom_toBottomOf="@+id/textInputLayout4"
+                app:layout_constraintStart_toStartOf="@+id/textInputLayout3"
+                app:layout_constraintTop_toTopOf="@+id/textInputLayout4" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:textColorHint="@color/text_color"
+                android:theme="@style/Theme.App.Base"
+                app:hintTextColor="@color/text_color"
+                app:errorText="@{error.phoneNumberError}"
+                app:errorTextColor="@color/error_color"
+                app:errorIconTint="@color/error_color"
+                android:hint="@string/mobile_number"
+                app:layout_constraintEnd_toEndOf="@+id/textInputLayout3"
+                app:layout_constraintStart_toEndOf="@id/spinner_view"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/ed_phone_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone"
+                    android:maxLines="1"
+                    android:maxLength="9"
+                    android:text="@={viewModel.phonenumber}"
+                    android:textColor="@color/white" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+           <!-- <TextView
+                android:id="@+id/textView7"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_weight="1"
+                android:padding="10dp"
+                android:fontFamily="@font/dmsans_reguler"
+                android:text="@string/date_of_birth"
+                android:textColor="@color/text_color"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/spinner_view"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout4" />
+
+  -->          <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txt_layout_date_sick"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/text_color"
+            android:theme="@style/Theme.App.Base"
+            app:hintTextColor="@color/text_color"
+            app:layout_constraintEnd_toEndOf="@+id/textInputLayout4"
+            app:layout_constraintStart_toStartOf="@+id/spinner_view"
+            app:layout_constraintTop_toBottomOf="@id/textInputLayout4">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:focusable="false"
+                android:hint="@string/dob"
+                android:drawableStart="@drawable/ic_calender"
+                android:textColor="@color/text_color"
+                android:onClick="@{(v)->fragment.onDateofBirthClicked(v)}"
+                android:text="@={viewModel.dob}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/dmsans_reguler"
+                android:padding="10dp"
+                android:text="@string/gender"
+                android:textColor="@color/text_color"
+                app:layout_constraintEnd_toEndOf="@+id/txt_layout_date_sick"
+                app:layout_constraintStart_toStartOf="@+id/txt_layout_date_sick"
+                app:layout_constraintTop_toBottomOf="@+id/txt_layout_date_sick" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:onCheckedChanged="@{fragment.onSplitTypeChanged}"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="@+id/textView8"
+                app:layout_constraintTop_toBottomOf="@+id/textView8">
+                <!--                        android:checked="@{viewModel.gender.equals()}"-->
+                <RadioButton
+                    android:id="@+id/radioButton2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/male"
+                    android:enabled="false"
+                    android:clickable="false"
+                    android:checked="@{viewModel.isMale}"
+                    android:textColor="@color/white" />
+
+                <RadioButton
+                    android:id="@+id/radioButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/female"
+                    android:enabled="false"
+                    android:clickable="false"
+                    android:checked="@{!viewModel.isMale}"
+                    android:textColor="@color/white" />
+            </RadioGroup>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/text_color"
+                android:theme="@style/Theme.App.Base"
+                app:hintTextColor="@color/text_color"
+                app:layout_constraintEnd_toEndOf="@+id/textView8"
+                app:layout_constraintStart_toStartOf="@+id/radioGroup"
+                app:layout_constraintTop_toBottomOf="@+id/radioGroup">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_baseline_speaker_notes_24"
+                    android:drawableLeft="@drawable/ic_baseline_speaker_notes_24"
+                    android:drawablePadding="5dp"
+                    android:hint="@string/civil_id"
+                    android:enabled="false"
+                    android:focusable="false"
+                    android:maxLines="1"
+                    android:text="@={viewModel.civilid}"
+                    android:textColor="@color/white" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/txt_garage"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_family"
+                android:fontFamily="@font/dmsans_bold"
+                android:padding="15dp"
+                android:onClick="@{(v)->fragment.onCancelClick()}"
+                android:text="@string/cancel"
+                android:textAlignment="center"
+                android:textColor="@color/text_color"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@id/guideline1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout5" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <TextView
+                android:id="@+id/txt_notify"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="16dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_upload_image"
+                android:fontFamily="@font/dmsans_bold"
+                android:padding="15dp"
+                android:text="@string/save"
+                android:onClick="@{(v)->fragment.callRegistration(error)}"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/guideline1"
+                app:layout_constraintTop_toTopOf="@+id/txt_garage" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

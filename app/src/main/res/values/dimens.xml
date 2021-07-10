@@ -1,0 +1,9 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="radius_small" >30dp</dimen>
+    <dimen name="margin_main">16dp</dimen>
+    <dimen name="margin_item">16dp</dimen>
+    <dimen name="diemn_10">10dp</dimen>
+    <dimen name="text_size_18">18sp</dimen>
+    <dimen name="dimen_16">16dp</dimen>
+</resources>

@@ -1,0 +1,658 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splash_fragment">
+    <include app:graph="@navigation/nav_home_graph" />
+
+    <fragment
+        android:id="@+id/dashboard_fragment"
+        android:name="com.ilaftalkful.mobileonthego.view.home.DashBoardFragment"
+        android:label="@string/dashboard_fragment_label"
+        tools:layout="@layout/dashboard_fragment">
+        <action
+            android:id="@+id/action_home_to_home_graph"
+            app:destination="@id/nav_home_graph" />
+        <action android:id="@+id/action_show_login_from_home"
+            app:destination="@id/login_fragment"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/dashboard_fragment"/>
+        <action android:id="@+id/action_show_travel_insurance"
+            app:destination="@id/travel_insurance"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+           />
+
+        <action android:id="@+id/action_show_travel_claim"
+            app:destination="@id/travel_claim"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            />
+        <action
+            android:id="@+id/action_dashboard_fragment_to_motorClaimFragment"
+            app:destination="@id/motorClaimFragment" />
+        <action
+            android:id="@+id/action_dashboard_fragment_to_motorQouteFragment"
+            app:destination="@id/motorQouteFragment" />
+        <action
+            android:id="@+id/action_dashboard_fragment_to_motorRenewFragment"
+            app:destination="@id/motorRenewFragment" />
+        <action
+            android:id="@+id/action_dashboard_fragment_to_corporateQoutesFragment"
+            app:destination="@id/corporateQoutesFragment" />
+        <action
+            android:id="@+id/action_dashboard_fragment_to_hospitalNetworkFragment"
+            app:destination="@id/hospitalNetworkFragment" />
+        <action
+            android:id="@+id/action_dashboard_fragment_to_assistanceForClameFragment"
+            app:destination="@id/assistanceForClameFragment" />
+        <action
+            android:id="@+id/action_dashboard_fragment_to_marineInsurenceFragment"
+            app:destination="@id/marineInsurenceFragment" />
+        <action android:id="@+id/action_session_expiry"
+            app:destination="@id/login_fragment"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"/>
+
+        <action android:id="@+id/action_show_garage"
+            app:destination="@id/garage_fragment"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left" />
+
+
+        <action android:id="@+id/action_change_password"
+            app:destination="@id/change_password"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"/>
+
+        <action android:id="@+id/action_edit_profile"
+            app:destination="@id/edit_profile_fragment"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"/>
+
+        <action android:id="@+id/action_show_about_us"
+            app:destination="@id/about_us_fragment"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"/>
+
+        <action android:id="@+id/action_show_location"
+            app:destination="@id/locationFragment"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"/>
+        <action
+            android:id="@+id/action_profile_fragment_to_editFamilyListFragment"
+            app:destination="@id/editFamilyListFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/about_us_fragment"
+        android:name="com.ilaftalkful.mobileonthego.view.aboutus.AboutUsFragment"
+        android:label="@string/about_ilaf"
+        tools:layout="@layout/about_us_fragment">
+        <action android:id="@+id/action_show_home"
+            app:destination="@id/dashboard_fragment"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/dashboard_fragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/locationFragment"
+        android:name="com.ilaftalkful.mobileonthego.view.location.LocationMapFragment"
+        tools:layout="@layout/location_map_fragment"/>
+    <fragment
+        android:id="@+id/edit_profile_fragment"
+        android:name="com.ilaftalkful.mobileonthego.view.editprofile.EditProfileFragment"
+        android:label="@string/edit_profile"
+        tools:layout="@layout/edit_profile_fragment">
+        <action android:id="@+id/action_show_home"
+            app:destination="@id/dashboard_fragment"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/dashboard_fragment"/>
+        <action android:id="@+id/action_session_expiry"
+            app:destination="@id/login_fragment"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"/>
+    </fragment>
+    <fragment
+        android:id="@+id/change_password"
+        android:name="com.ilaftalkful.mobileonthego.view.login.ChangePasswordFragment"
+        android:label="@string/change_password"
+        tools:layout="@layout/change_password_fragment">
+        <action android:id="@+id/action_show_home"
+            app:destination="@id/dashboard_fragment"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/dashboard_fragment"/>
+        <action android:id="@+id/action_session_expiry"
+            app:destination="@id/login_fragment"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"/>
+
+        <action android:id="@+id/action_show_login"
+            app:destination="@id/login_fragment"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/change_password"/>
+
+    </fragment>
+    <fragment
+        android:id="@+id/travel_insurance"
+        android:name="com.ilaftalkful.mobileonthego.view.buyinsurance.TravelInsuranceFragment"
+        android:label="@string/travel_insurence"
+        tools:layout="@layout/travel_insurance_fragment">
+        <action android:id="@+id/action_show_home"
+            app:destination="@id/dashboard_fragment"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/dashboard_fragment"/>
+
+        <action android:id="@+id/action_show_login_from_home"
+            app:destination="@id/login_fragment"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            />
+
+        <action
+            android:id="@+id/action_show_action_buy_now"
+            app:destination="@id/buy_insurance_basic_details"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpToInclusive="false" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/buy_insurance_basic_details"
+        android:name="com.ilaftalkful.mobileonthego.view.payment.BuyInsuranceBasicDetailsFragment"
+        android:label="@string/buy_insurence"
+        tools:layout="@layout/buy_insurance_basic_details_fragment">
+        <action
+            android:id="@+id/action_show_payment"
+            app:destination="@id/payment_fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpToInclusive="false" />
+
+        <action android:id="@+id/action_show_home"
+            app:destination="@id/dashboard_fragment"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/dashboard_fragment"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/payment_fragment"
+        android:name="com.ilaftalkful.mobileonthego.view.payment.PaymentSubmitFragment"
+        android:label="@string/buy_insurence"
+        tools:layout="@layout/payment_submit_fragment">
+        <action
+            android:id="@+id/action_show_home"
+            app:destination="@id/dashboard_fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/dashboard_fragment"
+            app:popUpToInclusive="true" />
+     <!--   <action android:id="@+id/action_back_press"
+            app:destination="@id/buy_insurance_basic_details"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left" />-->
+
+        <action
+            android:id="@+id/action_payment_webview"
+            app:destination="@id/payment_web_view_fragmnet"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/payment_fragment"
+            app:popUpToInclusive="false" />
+        <action android:id="@+id/action_show_edit_family_members"
+            app:destination="@id/editFamilyListFragment"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"/>
+    </fragment>
+    <fragment
+        android:id="@+id/payment_web_view_fragmnet"
+        android:name="com.ilaftalkful.mobileonthego.view.payment.PaymentWebViewFragment"
+        android:label="@string/buy_insurence"
+        tools:layout="@layout/payment_web_view_fragment">
+        <action android:id="@+id/action_show_after_payment_screen"
+            app:destination="@id/payment_status_fragment"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/payment_web_view_fragmnet"/>
+
+    </fragment>
+    <fragment
+        android:id="@+id/payment_status_fragment"
+        android:name="com.ilaftalkful.mobileonthego.view.payment.PaymentStatusFragment"
+        android:label="@string/buy_insurence"
+        tools:layout="@layout/payment_status_fragment">
+    <action android:id="@+id/action_show_home"
+        app:destination="@id/dashboard_fragment"
+        app:exitAnim="@anim/slide_out_left"
+        app:enterAnim="@anim/slide_in_right"
+        app:popExitAnim="@anim/slide_out_right"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popUpToInclusive="true"
+        app:popUpTo="@id/dashboard_fragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/travel_claim"
+        android:name="com.ilaftalkful.mobileonthego.view.buyinsurance.TravelClaimsFragment"
+        android:label="@string/travel_claims"
+        tools:layout="@layout/travel_claims_fragment">
+        <action android:id="@+id/action_show_home"
+            app:destination="@id/dashboard_fragment"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/dashboard_fragment"/>
+
+        <action android:id="@+id/action_show_claim_success"
+            app:destination="@id/payment_status_fragment"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/dashboard_fragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/login_fragment"
+        android:name="com.ilaftalkful.mobileonthego.view.login.LoginFragment"
+        android:label="@string/login_fragment_label"
+        tools:layout="@layout/login_fragment">
+        <action android:id="@+id/action_show_home_guest"
+            app:destination="@id/dashboard_fragment"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/login_fragment"/>
+
+        <action android:id="@+id/action_show_register"
+            app:destination="@id/register_fragment"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/login_fragment"/>
+        <action
+            android:id="@+id/action_login_fragment_to_resetPasswordFragment"
+            app:destination="@id/resetPasswordFragment"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/login_fragment"/>
+
+        <action android:id="@+id/action_show_finger_print"
+            app:destination="@id/finger_print_fragment"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"/>
+    </fragment>
+    <fragment
+        android:id="@+id/finger_print_fragment"
+        android:name="com.ilaftalkful.mobileonthego.view.login.FingerPrintFragment"
+        tools:layout="@layout/finger_print_fragment">
+        <action android:id="@+id/action_show_home_guest"
+            app:destination="@id/dashboard_fragment"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/finger_print_fragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/splash_fragment"
+        android:name="com.ilaftalkful.mobileonthego.view.splash.SplashFragment"
+        android:label="@string/splash_fragment_label"
+        tools:layout="@layout/splash_fragment">
+
+
+
+        <action android:id="@+id/action_change_password"
+            app:destination="@id/change_password"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/splash_fragment"/>
+
+        <action android:id="@+id/action_show_home"
+            app:destination="@id/dashboard_fragment"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/splash_fragment"/>
+
+        <action android:id="@+id/action_show_login"
+            app:destination="@id/login_fragment"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/splash_fragment"/>
+
+        <action android:id="@+id/action_show_splash_message"
+            app:destination="@id/splash_message_fragment"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/splash_fragment"/>
+
+        <action android:id="@+id/action_show_home_for_guest"
+            app:destination="@id/dashboard_fragment"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/splash_fragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/splash_message_fragment"
+        android:name="com.ilaftalkful.mobileonthego.view.splash.OperationalMarketingFragment"
+        tools:layout="@layout/operational_marketing_fragment">
+
+        <action android:id="@+id/action_show_login_om"
+            app:destination="@id/login_fragment"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/splash_message_fragment"/>
+
+        <action android:id="@+id/action_show_home_from_om"
+            app:destination="@id/dashboard_fragment"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/splash_message_fragment"/>
+
+        <action android:id="@+id/action_show_web_view"
+            app:destination="@id/payment_web_view_fragmnet"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"/>
+    </fragment>
+    <fragment
+        android:id="@+id/register_fragment"
+        android:name="com.ilaftalkful.mobileonthego.view.register.RegisterFragment"
+        android:label="@string/register"
+        tools:layout="@layout/register_fragment">
+        <action android:id="@+id/action_show_login_from_register"
+            app:destination="@id/login_fragment"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/register_fragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/resetPasswordFragment"
+        android:name="com.ilaftalkful.mobileonthego.view.login.ResetPasswordFragment"
+        android:label="fragment_reset_password"
+        tools:layout="@layout/fragment_reset_password" >
+        <action android:id="@+id/action_show_login"
+            app:destination="@id/login_fragment"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/resetPasswordFragment"/>
+
+        <action android:id="@+id/action_show_home"
+            app:destination="@id/dashboard_fragment"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/dashboard_fragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/motorClaimFragment"
+        android:name="com.ilaftalkful.mobileonthego.view.motorinsurance.MotorClaimFragment"
+        android:label="Claims"
+        tools:layout="@layout/motor_claim_fragment" >
+
+        <action android:id="@+id/action_show_garage"
+            app:destination="@id/garage_fragment"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/motorClaimFragment"/>
+        <action android:id="@+id/show_action_claim"
+            app:destination="@id/dashboard_fragment"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/motorClaimFragment"
+            />
+
+        <action android:id="@+id/action_show_home"
+            app:destination="@id/dashboard_fragment"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/dashboard_fragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/garage_fragment"
+        android:name="com.ilaftalkful.mobileonthego.view.motorinsurance.GarageFragment"
+        android:label="@string/garage"
+        tools:layout="@layout/garage_fragment" >
+    <action android:id="@+id/action_show_motor_claim"
+        app:destination="@id/motorClaimFragment"
+        app:exitAnim="@anim/slide_out_left"
+        app:enterAnim="@anim/slide_in_right"
+        app:popExitAnim="@anim/slide_out_right"
+        app:popEnterAnim="@anim/slide_in_left"
+        app:popUpToInclusive="true"
+        app:popUpTo="@id/garage_fragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/motorQouteFragment"
+        android:name="com.ilaftalkful.mobileonthego.view.motorinsurance.MotorQouteFragment"
+        android:label="Quote"
+        tools:layout="@layout/motor_qoute_fragment" >
+        <action android:id="@+id/action_show_home"
+            app:destination="@id/dashboard_fragment"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/dashboard_fragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/motorRenewFragment"
+        android:name="com.ilaftalkful.mobileonthego.view.motorinsurance.MotorRenewFragment"
+        android:label="Renew"
+        tools:layout="@layout/motor_renew_fragment" >
+        <action android:id="@+id/action_show_home"
+            app:destination="@id/dashboard_fragment"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/dashboard_fragment"/>
+        <action android:id="@+id/action_session_expiry"
+            app:destination="@id/login_fragment"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"/>
+        <action android:id="@+id/action_payment_webview"
+            app:destination="@id/payment_web_view_fragmnet"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"/>
+    </fragment>
+    <fragment
+        android:id="@+id/corporateQoutesFragment"
+        android:name="com.ilaftalkful.mobileonthego.view.healthinsurence.CorporateQoutesFragment"
+        android:label="Corporate Quotes" >
+        <action android:id="@+id/action_session_expiry"
+            app:destination="@id/login_fragment"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"/>
+    </fragment>
+    <fragment
+        android:id="@+id/hospitalNetworkFragment"
+        android:name="com.ilaftalkful.mobileonthego.view.healthinsurence.HospitalNetworkFragment"
+        android:label="Hospital Network"
+        tools:layout="@layout/hospital_network_fragment" >
+        <action android:id="@+id/action_session_expiry"
+            app:destination="@id/login_fragment"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"/>
+    </fragment>
+    <fragment
+        android:id="@+id/assistanceForClameFragment"
+        android:name="com.ilaftalkful.mobileonthego.view.healthinsurence.AssistanceForClameFragment"
+        android:label="@string/assistace_claim"
+        tools:layout="@layout/assistance_for_clame_fragment" >
+        <action android:id="@+id/action_session_expiry"
+            app:destination="@id/login_fragment"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"/>
+    </fragment>
+    <fragment
+        android:id="@+id/marineInsurenceFragment"
+        android:name="com.ilaftalkful.mobileonthego.view.marine.MarineInsurenceFragment"
+        android:label="Marine Insurance" >
+        <action android:id="@+id/action_session_expiry"
+            app:destination="@id/login_fragment"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"/>
+
+        <action android:id="@+id/action_show_home"
+            app:destination="@id/dashboard_fragment"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/marineInsurenceFragment"/>
+    </fragment>
+
+
+
+
+    <fragment
+        android:id="@+id/editFamilyListFragment"
+        android:name="com.ilaftalkful.mobileonthego.view.family.EditFamilyListFragment"
+        android:label="EditFamilyListFragment" >
+        <action android:id="@+id/action_show_home"
+            app:destination="@id/dashboard_fragment"
+            app:exitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/dashboard_fragment"/>
+    </fragment>
+
+
+
+</navigation>

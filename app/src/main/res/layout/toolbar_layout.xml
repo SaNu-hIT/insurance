@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<data>
+    <variable
+        name="pageLabel"
+        type="String" />
+    <variable
+        name="fragment"
+        type="com.ilaftalkful.mobileonthego.base.IlafBaseFragment" />
+    <variable
+        name="viewModel"
+        type="com.ilaftalkful.mobileonthego.viewmodel.IlafBaseViewModel" />
+</data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bottum_curve">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/toolbar_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/diemn_10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/back_arrow"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginStart="8dp"
+                android:onClick="@{(v)->fragment.onBackClicked(v)}"
+                android:src="@drawable/ic_back_arrow"
+                android:padding="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/header_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/dmsans_bold"
+                android:text="@{pageLabel}"
+                android:maxLines="1"
+                android:textAlignment="viewStart"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="@id/back_arrow"
+                app:layout_constraintEnd_toEndOf="@+id/guideline3"
+                app:layout_constraintStart_toEndOf="@id/back_arrow"
+                app:layout_constraintTop_toTopOf="@id/back_arrow" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline3"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5"/>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:layout_constraintBottom_toBottomOf="@id/back_arrow"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/guideline3"
+                app:layout_constraintTop_toTopOf="@id/back_arrow">
+
+                <ImageView
+                    android:id="@+id/icon_home"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:onClick="@{(v)->fragment.onHomeClicked(v)}"
+                    android:src="@drawable/ic_baseline_home_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/txt_en"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:background="@{viewModel.isENS?@drawable/bg_language:null}"
+                    android:fontFamily="@font/dmsans_bold"
+                    android:gravity="center"
+                    android:onClick="@{(v)->fragment.onEnglishClicked(v)}"
+                    android:padding="10dp"
+                    android:text="@string/en"
+                    android:textColor="@{viewModel.isENS?@color/black:@color/white}"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/txt_ar"
+                    app:layout_constraintStart_toEndOf="@+id/icon_home"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/txt_ar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:background="@{(!viewModel.isENS)?@drawable/bg_language:null}"
+                    android:fontFamily="@font/dmsans_bold"
+                    android:gravity="center"
+                    android:onClick="@{(v)->fragment.onArabicClicked(v)}"
+                    android:padding="10dp"
+                    android:text="@string/ar"
+                    android:textColor="@{(!viewModel.isENS)?@color/black:@color/white}"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/icon_bell"
+                    app:layout_constraintStart_toEndOf="@+id/txt_en"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <ImageView
+                    android:id="@+id/icon_bell"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:padding="10dp"
+                    android:onClick="@{(v)->fragment.onNotificationClicked(v)}"
+                    android:src="@drawable/ic_baseline_notifications_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/txt_ar"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+            <!--            <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toEndOf="@+id/guideline3"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent">-->
+
+<!--                <ImageView-->
+<!--                    android:id="@+id/icon_home"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:padding="10dp"-->
+<!--                    android:src="@drawable/ic_baseline_home_24"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/layout_language"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="horizontal"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    app:layout_constraintEnd_toStartOf="@id/icon_bell"-->
+<!--                    app:layout_constraintStart_toEndOf="@+id/icon_home"-->
+<!--                    android:weightSum="2"-->
+<!--                    android:gravity="center_vertical|center_horizontal"-->
+<!--                    app:layout_constraintTop_toTopOf="parent">-->
+
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/txt_en"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:background="@{viewModel.isENS?@drawable/bg_language:null}"-->
+<!--                        android:fontFamily="@font/dmsans_bold"-->
+<!--                        android:gravity="center"-->
+<!--                        android:padding="5dp"-->
+
+<!--                        android:layout_marginLeft="8dp"-->
+<!--                        android:text="@string/en"-->
+<!--                        android:textColor="@{viewModel.isENS?@color/black:@color/white}"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:textSize="12sp"-->
+<!--                        android:onClick="@{(v)->fragment.onEnglishClicked(v)}"-->
+<!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                        app:layout_constraintEnd_toStartOf="@id/txt_ar"-->
+<!--                        app:layout_constraintStart_toEndOf="@+id/icon_home"-->
+<!--                        app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/txt_ar"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:fontFamily="@font/dmsans_bold"-->
+<!--                        android:gravity="center"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:padding="5dp"-->
+<!--                        android:layout_marginLeft="8dp"-->
+<!--                        android:layout_marginRight="8dp"-->
+<!--                        android:onClick="@{(v)->fragment.onArabicClicked(v)}"-->
+
+<!--                        android:background="@{(!viewModel.isENS)?@drawable/bg_language:null}"-->
+<!--                        android:text="@string/ar"-->
+<!--                        android:textColor="@{(!viewModel.isENS)?@color/black:@color/white}"-->
+<!--                        android:textSize="12sp"-->
+<!--                        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                        app:layout_constraintStart_toEndOf="@+id/txt_en"-->
+<!--                        app:layout_constraintTop_toTopOf="parent" />-->
+<!--                </LinearLayout>-->
+
+<!--                <ImageView-->
+<!--                    android:id="@+id/icon_bell"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:src="@drawable/ic_baseline_notifications_24"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintStart_toEndOf="@+id/layout_language"-->
+<!--                    app:layout_constraintTop_toTopOf="parent" />-->
+<!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+   <!-- <LinearLayout
+        android:layout_width="0dp"
+        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_view"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:padding="10dp"
+            android:orientation="horizontal"
+            android:layout_margin="20dp"
+            android:visibility="@{viewModel.isGusetLogin()?View.VISIBLE:View.GONE}"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/login_guest_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:textSize="15sp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/dmsans_bold"
+                android:text="@string/loged_in_as_guest"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                style="@style/tittileText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/accent_button_bg"
+                android:fontFamily="@font/dmsans_bold"
+                android:onClick="@{(v)->fragment.onRegisterOrLoginClicked(v)}"
+                android:padding="10dp"
+                android:text="@string/login_or_register"
+
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/login_guest_text"
+                app:layout_constraintTop_toBottomOf="@+id/login_guest_text" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:padding="10dp"
+            android:background="@drawable/accent_button_bg"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:layout_margin="20dp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="60dp"
+                android:src="@drawable/logo"
+                android:layout_margin="10dp"
+                android:layout_height="60dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content">
+                <TextView
+                    style="@style/tittileText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/dmsans_bold"
+                    android:text="Muhammad Samad"
+                    />
+                <TextView
+                    style="@style/slimText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/dmsans_bold"
+                    android:text="Civil ID :KWT1524"
+                    />
+
+            </LinearLayout>
+
+    </LinearLayout>
+
+    </LinearLayout>-->
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
+
+

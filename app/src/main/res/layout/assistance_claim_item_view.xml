@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="data"
+            type="com.ilaftalkful.mobileonthego.model.health.claimassistance.Datum" />
+        <variable
+            name="onClick"
+            type="com.ilaftalkful.mobileonthego.listener.OnItemClickListener" />
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:elevation="1dp"
+        android:padding="5dp"
+        android:background="@drawable/white_curve"
+        android:layout_margin="@dimen/diemn_10"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="85dp"
+            android:layout_gravity="center"
+            android:src="@drawable/logo"
+
+
+            android:layout_height="85dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            >
+
+            <TextView
+                android:id="@+id/title_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{data.healthClaimAssistanceName}"
+                android:layout_marginLeft="5dp"
+                android:textAlignment="viewStart"
+                android:maxLines="1"
+                android:textSize="15dp"
+                android:fontFamily="@font/dmsans_bold"
+                android:textColor="@color/colorPrimary"
+                />
+
+
+            <TextView
+                android:id="@+id/gold_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="13dp"
+                android:layout_marginLeft="5dp"
+                android:text="@{data.healthClaimAssistanceRegion}"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/dmsans_reguler"
+
+                />
+            <TextView
+                android:id="@+id/platinum_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="textStart"
+                android:maxLines="1"
+                android:textSize="18dp"
+                android:drawablePadding="5dp"
+                android:fontFamily="@font/dmsans_bold"
+                android:onClick="@{(v)->onClick.onItemClick(v,data)}"
+                android:text="@{data.phoneNumber}"
+                android:layout_margin="5dp"
+                android:drawableTint="@color/colorPrimary"
+                android:drawableLeft="@drawable/ic_mobile_number"
+
+                android:textColor="@color/colorPrimary"
+                />
+
+
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

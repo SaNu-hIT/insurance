@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.ilaftalkful.mobileonthego.view.LoginViewModel" />
+        <variable
+            name="fragment"
+            type="com.ilaftalkful.mobileonthego.view.login.LoginFragment" />
+        <variable
+            name="errors"
+            type="com.ilaftalkful.mobileonthego.model.SignInErrors" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_main"
+            android:layout_marginTop="@dimen/margin_main"
+            android:layout_marginRight="@dimen/margin_main"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:fontFamily="@font/dmsans_bold"
+                android:padding="10dp"
+                android:text="@string/login"
+                android:textColor="@color/white"
+                android:textSize="18dp"
+                app:layout_constraintEnd_toStartOf="@+id/txt_en"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/txt_en"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@{viewModel.isENS?@drawable/bg_language:null}"
+                android:fontFamily="@font/dmsans_bold"
+                android:gravity="center"
+                android:onClick="@{(v)->fragment.onEnglishClicked(v)}"
+                android:padding="10dp"
+                android:text="@string/en"
+                android:textColor="@{viewModel.isENS?@color/black:@color/white}"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/txt_ar"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txt_ar"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@{(!viewModel.isENS)?@drawable/bg_language:null}"
+                android:fontFamily="@font/dmsans_bold"
+                android:gravity="center"
+                android:onClick="@{(v)->fragment.onArabicClicked(v)}"
+                android:padding="10dp"
+                android:text="@string/ar"
+                android:textColor="@{(!viewModel.isENS)?@color/black:@color/white}"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_main"
+            android:layout_marginTop="@dimen/margin_main"
+            android:layout_marginRight="@dimen/margin_main"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txt_layout_emilid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/email_id"
+                android:textColorHint="@color/text_color"
+                android:theme="@style/Theme.App.Base"
+                app:errorTextColor="@color/error_color"
+                app:errorIconTint="@color/error_color"
+                app:errorText="@{errors.userNameError}"
+                app:hintTextColor="@color/text_color">
+
+                <EditText
+                    android:id="@+id/edtxt_emilid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_baseline_email_24"
+                    android:drawableLeft="@drawable/ic_baseline_email_24"
+                    android:drawablePadding="5dp"
+                    android:gravity="center_vertical"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:text="@={viewModel.username}"
+                    android:textColor="@color/text_color" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txt_layout_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/text_color"
+                app:errorText="@{errors.userPasswordError}"
+                android:theme="@style/Theme.App.Base"
+                app:errorTextColor="@color/error_color"
+                app:errorIconTint="@color/error_color"
+                app:hintTextColor="@color/text_color"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:drawableStart="@drawable/ic_baseline_lock_24"
+                    android:drawableLeft="@drawable/ic_baseline_lock_24"
+                    android:drawablePadding="5dp"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:text="@={viewModel.password}"
+                    android:textColor="@color/white" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_gravity="center"
+                android:layout_marginTop="55dp"
+
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/accent_button_bg"
+                    android:onClick="@{(v)->fragment.showFingerPrint(v)}"
+                    android:padding="10dp"
+                    android:visibility="@{viewModel.isFingerPrintEnable}"
+                    android:src="@drawable/ic_lg_fingerprint" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:alpha="@{errors.uiUpdate ? 0.3f : 1.0f}"
+                    android:enabled="@{viewModel.isValid}"
+                    android:onClick="@{(v)->fragment.onLoginClicked(v,errors)}"
+                    android:padding="15dp"
+                    android:text="@string/login"
+                    android:textAllCaps="true"
+                    android:theme="@style/AccentButton"
+                    app:layout_constraintEnd_toEndOf="parent" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/dmsans_reguler"
+                android:gravity="center"
+                android:onClick="@{(v)->fragment.onResetPasswordClicked(v)}"
+                android:text="@string/forget_password"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toTopOf="@+id/textView12"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_main"
+            android:layout_marginTop="@dimen/margin_main"
+            android:layout_marginRight="@dimen/margin_main"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/button3"
+                    style="@style/WhiteRectButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:onClick="@{(v)->fragment.onGuestClicked(v)}"
+                    android:text="@string/login_as_guest"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:layout_editor_absoluteY="602dp" />
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/dmsans_reguler"
+                    android:gravity="center"
+                    android:text="@string/dont_have_an_account"
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toTopOf="@+id/textView12"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center|bottom"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="16dp"
+                    android:fontFamily="@font/dmsans_medium"
+                    android:gravity="center|bottom"
+                    android:onClick="@{(v)->fragment.onRegisterClicked(v)}"
+                    android:text="@string/register"
+                    android:textColor="@color/white"
+                    android:textSize="18dp" />
+            </LinearLayout>
+
+        </RelativeLayout>
+    </LinearLayout>
+</layout>

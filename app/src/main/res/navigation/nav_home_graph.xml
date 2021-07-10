@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_home_graph"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/products_fragment">
+
+    <fragment
+        android:id="@+id/products_fragment"
+        android:name="com.ilaftalkful.mobileonthego.view.home.ProductsFragment"
+        tools:layout="@layout/products_fragment">
+        <action
+            android:id="@+id/action_products_fragment_to_profile_fragment"
+            app:destination="@id/profile_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/contact_fragment"
+        android:name="com.ilaftalkful.mobileonthego.view.home.ContactFragment"
+        tools:layout="@layout/contact_fragment">
+    </fragment>
+
+    <fragment
+        android:id="@+id/mylogs_fragment"
+        android:name="com.ilaftalkful.mobileonthego.view.home.MyLogsFragment"
+        tools:layout="@layout/my_logs_fragment">
+    </fragment>
+
+    <fragment
+        android:id="@+id/profile_fragment"
+        android:name="com.ilaftalkful.mobileonthego.view.home.ProfileFragment"
+        tools:layout="@layout/profile_fragment">
+
+    </fragment>
+
+
+
+</navigation>

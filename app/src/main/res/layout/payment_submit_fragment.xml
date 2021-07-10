@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="viewModel"
+            type="com.ilaftalkful.mobileonthego.view.payment.BuyInsuranceBasicDetailsViewModel" />
+        <variable
+            name="fragment"
+            type="com.ilaftalkful.mobileonthego.view.payment.PaymentSubmitFragment" />
+        <variable
+            name="label"
+            type="String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        tools:context=".view.payment.BuyInsuranceBasicDetailsFragment">
+
+
+
+    <include
+        android:id="@+id/toolbar_view"
+        layout="@layout/toolbar_layout"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        app:fragment="@{fragment}"
+        app:viewModel="@{viewModel}"
+        app:pageLabel="@{label}"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/text_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_view">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/txt_policy_type"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/policy_type"
+            android:textColor="@color/text_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Spinner
+            android:id="@+id/txt_layout_policy_type"
+            style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:clickable="false"
+            android:theme="@style/payment_spinner"
+            android:entries="@{viewModel.policyOptionList}"
+            android:minHeight="50dp"
+            android:selectedItemPosition="@={viewModel.selectedPolicyOptions}"
+            app:layout_constraintEnd_toEndOf="@+id/txt_policy_type"
+            android:popupBackground="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="@+id/txt_policy_type"
+            app:layout_constraintTop_toBottomOf="@+id/txt_policy_type" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5"/>
+<TextView
+    android:id="@+id/txt_policy_option"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:text="@string/policy_option"
+    android:textColor="@color/text_color"
+    android:padding="10dp"
+    app:layout_constraintEnd_toStartOf="@id/guideline"
+    app:layout_constraintStart_toStartOf="@+id/txt_layout_policy_type"
+    app:layout_constraintTop_toBottomOf="@+id/txt_layout_policy_type" />
+
+        <Spinner
+            android:id="@+id/txt_layout_policy_option"
+            style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:clickable="false"
+            android:entries="@{viewModel.policyTypeList}"
+            android:minHeight="50dp"
+            android:selectedItemPosition="@={viewModel.selectedPolicyType}"
+            android:theme="@style/payment_spinner"
+            android:popupBackground="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="@+id/txt_policy_option"
+            app:layout_constraintTop_toBottomOf="@+id/txt_policy_option" />
+
+        <TextView
+            android:id="@+id/txt_policy_period"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/policy_period"
+            android:textColor="@color/text_color"
+            android:padding="10dp"
+            app:layout_constraintStart_toEndOf="@id/guideline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_layout_policy_type" />
+        <Spinner
+            android:id="@+id/txt_layout_policy_period"
+            style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:popupBackground="@color/colorPrimary"
+            android:clickable="false"
+            android:minHeight="50dp"
+            android:entries="@{viewModel.policyPeriodList}"
+            android:selectedItemPosition="@={viewModel.selectedPolicyPeriod}"
+            android:theme="@style/payment_spinner"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@+id/txt_policy_period" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:textColorHint="@color/text_color"
+            android:theme="@style/Theme.App.Base"
+            app:hintTextColor="@color/text_color"
+            app:errorTextColor="@color/error_color"
+            app:errorIconTint="@color/error_color"
+            app:layout_constraintEnd_toEndOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_layout_policy_period">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:focusable="false"
+                android:textSize="13sp"
+                android:textColor="@color/text_color"
+                android:drawableStart="@drawable/ic_calender"
+                android:onClick="@{(v)->fragment.onStartDateClicked(v)}"
+                android:text="@={viewModel.startDate}"
+                android:hint="@string/start_date"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_exit_data"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:textColorHint="@color/text_color"
+            android:theme="@style/Theme.App.Base"
+            app:hintTextColor="@color/text_color"
+            app:errorTextColor="@color/error_color"
+            app:errorIconTint="@color/error_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/txt_layout_policy_period">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:drawableStart="@drawable/ic_calender"
+                android:focusable="false"
+                android:textColor="@color/text_color"
+                android:text="@={viewModel.toDate}"
+                android:hint="@string/to_date" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/txt_family_list"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/family_list"
+            android:visibility="@{viewModel.isIndividualSelected()?View.GONE:View.VISIBLE}"
+            android:textColor="@color/text_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textInputLayout6" />
+
+        <TextView
+            android:id="@+id/txt_choose_family"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/bg_family"
+            android:padding="15dp"
+            android:text="@string/choose_family"
+            android:visibility="@{viewModel.isIndividualSelected()?View.GONE:View.VISIBLE}"
+
+            android:onClick="@{(v)->fragment.showFamilyMemberPopup()}"
+            android:textAlignment="center"
+            android:textColor="@color/text_color"
+            app:layout_constraintEnd_toStartOf="@id/guideline2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_family_list" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="@{viewModel.isIndividualSelected()?View.GONE:View.VISIBLE}"
+
+            app:layout_constraintGuide_percent="0.7"/>
+
+        <TextView
+            android:id="@+id/txt_add"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/bg_add"
+            android:padding="15dp"
+            android:text="@string/add"
+            android:onClick="@{(v)->fragment.onAddMemberClick()}"
+            android:visibility="@{viewModel.isIndividualSelected()?View.GONE:View.VISIBLE}"
+
+            android:minWidth="90dp"
+            android:drawableLeft="@drawable/ic_baseline_add_24"
+            android:drawablePadding="10dp"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/txt_family_list" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_family_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:visibility="@{viewModel.isIndividualSelected()?View.GONE:View.VISIBLE}"
+
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:adapter="@{fragment.familyMemberPolicyAdapter}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_choose_family" />
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/checkbox_tems_agree"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:checked="@={viewModel.isTermsChecked}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rv_family_list" />
+        <TextView
+            android:id="@+id/txt_terms_conditions_instruction"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="@{viewModel.termsAndConditions}"
+            android:textColor="@color/text_color"
+            app:layout_constraintTop_toTopOf="@+id/checkbox_tems_agree"
+            app:layout_constraintBottom_toBottomOf="@+id/checkbox_tems_agree"
+            app:layout_constraintStart_toEndOf="@id/checkbox_tems_agree"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/terms_conditions_instruction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:visibility="@{viewModel.isVisible?View.VISIBLE:View.GONE}"
+            android:text="@string/confirm_terms_and_conditions"
+            android:textColor="@color/error_color"
+            app:layout_constraintTop_toBottomOf="@+id/checkbox_tems_agree"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:onClick="@{(v)->fragment.onPaymentSubmit()}"
+            android:clickable="@{viewModel.isValid}"
+            android:background="@{viewModel.isValid?@drawable/accent_button_bg:@drawable/bg_payment}"
+            android:padding="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/terms_conditions_instruction">
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:src="@drawable/ic_platinum"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/terms_policy_type"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@{viewModel.paymentPolicyType}"
+                android:textSize="12sp"
+                android:fontFamily="@font/dmsans_reguler"
+                android:textColor="@color/text_color"
+                app:layout_constraintEnd_toEndOf="@id/guideline6"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/imageView3"
+                app:layout_constraintTop_toTopOf="@+id/imageView3" />
+
+            <TextView
+                android:id="@+id/txt_amount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@{`KD  `  +viewModel.paymentAmount}"
+                android:textSize="18sp"
+                android:fontFamily="@font/dmsans_bold"
+                android:textColor="@color/text_color"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+                app:layout_constraintEnd_toEndOf="@id/guideline6"
+                app:layout_constraintStart_toEndOf="@+id/imageView3"
+                app:layout_constraintTop_toBottomOf="@+id/terms_policy_type" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.60"/>
+
+
+            <TextView
+                android:id="@+id/txt_pay_now"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/pay_now"
+                android:textSize="18sp"
+                android:fontFamily="@font/dmsans_bold"
+                android:textColor="@color/text_color"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@id/guideline6"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

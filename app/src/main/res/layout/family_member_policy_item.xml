@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="data"
+            type="com.ilaftalkful.mobileonthego.model.family.Datum" />
+         <variable
+            name="callback"
+            type="com.ilaftalkful.mobileonthego.listener.OnItemClickListener" />
+        <variable
+            name="date"
+            type="String" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:background="@color/policy_family_member_color">
+
+        <TextView
+            android:id="@+id/txt_header"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:padding="10dp"
+            android:text="@string/family_member"
+            android:textColor="@color/text_color"
+            app:layout_constraintEnd_toStartOf="@+id/delete_id"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tl_familyname"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:theme="@style/Theme.App.Base"
+            android:layout_marginEnd="16dp"
+            app:hintTextColor="@color/text_color"
+            android:textColorHint="@color/text_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_header">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/name"
+                android:enabled="false"
+                android:textColor="@color/text_color"
+                android:focusable="false"
+                android:inputType="textCapWords"
+                android:text="@{data.fullName}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/relation_spinner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="16dp"
+            app:hintTextColor="@color/text_color"
+            android:textColorHint="@color/text_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:theme="@style/Theme.App.Base"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tl_familyname">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/relation"
+                android:textColor="@color/text_color"
+                android:enabled="false"
+                android:inputType="textCapWords"
+                android:text="@{data.relationDescription}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="@+id/relation_spinner"
+            app:layout_constraintStart_toStartOf="@+id/relation_spinner"
+            app:layout_constraintTop_toBottomOf="@+id/relation_spinner">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tl_dob"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:hintTextColor="@color/text_color"
+                    android:textColorHint="@color/text_color"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:theme="@style/Theme.App.Base"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tl_familyname">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/date_of_birth"
+                        android:textColor="@color/text_color"
+                        android:enabled="false"
+                        android:focusable="false"
+                        android:drawableStart="@drawable/ic_calender"
+                        android:text="@{date}" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:hintTextColor="@color/text_color"
+            android:textColorHint="@color/text_color"
+            android:theme="@style/Theme.App.Base"
+            app:layout_constraintEnd_toEndOf="@+id/linearLayout"
+            app:layout_constraintStart_toStartOf="@+id/linearLayout"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/passport_number"
+                android:maxLength="12"
+                android:maxLines="1"
+                android:inputType="number"
+                android:textColor="@color/text_color"
+                android:text="@{data.passportNumber}" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <ImageView
+            android:id="@+id/delete_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_cancel"
+            android:fontFamily="@font/dmsans_bold"
+            android:onClick="@{(v) -> callback.onItemClick(v,data)}"
+            android:padding="@dimen/diemn_10"
+            android:clickable="true"
+            android:src="@drawable/ic_delete"
+            app:layout_constraintBottom_toBottomOf="@+id/txt_header"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/txt_header"
+            tools:ignore="HardcodedText" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

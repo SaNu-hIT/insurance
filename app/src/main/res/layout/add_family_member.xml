@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.ilaftalkful.mobileonthego.view.payment.BuyInsuranceBasicDetailsViewModel" />
+        <variable
+            name="fragment"
+            type="com.ilaftalkful.mobileonthego.view.payment.PaymentSubmitFragment" />
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/rounded_dialog_bg">
+
+    <TextView
+        android:id="@+id/txt_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:padding="10dp"
+        android:text="@string/add_family_members"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tl_first_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:textColorHint="@color/colorPrimary"
+        android:theme="@style/travel_claim_style"
+        app:hintTextColor="@color/colorPrimary"
+        app:errorTextColor="@color/error_color"
+        app:errorIconTint="@color/error_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_header">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="5dp"
+            android:gravity="center|start"
+            android:hint="@string/name"
+            android:inputType="textCapWords"
+            android:text="@={viewModel.familyNameMember}"
+            android:textColor="@color/colorPrimary" />
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/txt_relation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:padding="10dp"
+        android:text="@string/relation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tl_first_name" />
+
+    <Spinner
+        android:id="@+id/spinner_member_relation"
+        style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:clickable="false"
+        android:entries="@{viewModel.relationList}"
+        android:minHeight="50dp"
+        android:selectedItemPosition="@={viewModel.selectedrelationId}"
+        android:theme="@style/claim_spinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_relation" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_dob"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textColorHint="@color/colorPrimary"
+        android:theme="@style/travel_claim_style"
+        app:hintTextColor="@color/colorPrimary"
+        app:errorTextColor="@color/error_color"
+        app:errorIconTint="@color/error_color"
+        app:layout_constraintEnd_toEndOf="@+id/spinner_member_relation"
+        app:layout_constraintStart_toStartOf="@+id/spinner_member_relation"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_member_relation">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="false"
+            android:drawableStart="@drawable/ic_calender"
+            android:hint="@string/date_of_birth"
+            android:onClick="@{(v)->fragment.onDateOfBirthClick(v)}"
+            android:text="@={viewModel.dateOfBirth}"
+            android:textColor="@color/colorPrimary" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tl_passport_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:textColorHint="@color/colorPrimary"
+        android:theme="@style/travel_claim_style"
+        app:hintTextColor="@color/colorPrimary"
+        app:errorTextColor="@color/error_color"
+        app:errorIconTint="@color/error_color"
+        app:layout_constraintEnd_toEndOf="@id/layout_dob"
+        app:layout_constraintStart_toStartOf="@id/layout_dob"
+        app:layout_constraintTop_toBottomOf="@id/layout_dob">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawablePadding="5dp"
+            android:gravity="center|start"
+            android:hint="@string/passport_no"
+            android:text="@={viewModel.pssportNoMember}"
+            android:textColor="@color/colorPrimary" />
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/txt_garage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_weight="1"
+        android:background="@drawable/bg_upload_image"
+        android:fontFamily="@font/dmsans_bold"
+        android:padding="15dp"
+        android:text="@string/cancel"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/guideline1"
+        app:layout_constraintStart_toStartOf="@id/tl_passport_number"
+        app:layout_constraintTop_toBottomOf="@id/tl_passport_number" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline1"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <TextView
+        android:id="@+id/txt_notify"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_weight="1"
+        android:background="@drawable/bg_common_submit"
+        android:fontFamily="@font/dmsans_bold"
+        android:padding="15dp"
+        android:text="@string/save"
+        android:textAlignment="center"
+        android:textColor="@color/text_color"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/guideline1"
+        app:layout_constraintTop_toTopOf="@+id/txt_garage" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

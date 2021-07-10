@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="fragment"
+            type="com.ilaftalkful.mobileonthego.view.motorinsurance.GarageFragment" />
+        <variable
+            name="viewModel"
+            type="com.ilaftalkful.mobileonthego.view.motorinsurance.GarageViewModel" />
+        <variable
+            name="label"
+            type="String" />
+    </data>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.motorinsurance.GarageFragment">
+
+    <include
+        android:id="@+id/toolbar_view"
+        layout="@layout/toolbar_layout"
+        app:fragment="@{fragment}"
+        app:pageLabel="@{label}"
+        app:viewModel="@{viewModel}"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/txt_agency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:background="@{viewModel.selectedOption==1?@drawable/bg_garage_option_selection:@drawable/bg_garage_option_unselection}"
+        android:textColor="@{viewModel.selectedOption==1?@color/white:@color/colorPrimary}"
+        android:fontFamily="@font/dmsans_medium"
+        android:minWidth="120dp"
+        android:padding="15dp"
+        android:text="@string/agency"
+        android:onClick="@{(v)->fragment.onAgencyClick(v)}"
+        android:textAlignment="center"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txt_outside" />
+
+    <TextView
+        android:id="@+id/txt_outside"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:onClick="@{(v)->fragment.onOutSideClick(v)}"
+        android:background="@{viewModel.selectedOption==2?@drawable/bg_garage_option_selection:@drawable/bg_garage_option_unselection}"
+        android:textColor="@{viewModel.selectedOption==2?@color/white:@color/colorPrimary}"
+        android:fontFamily="@font/dmsans_medium"
+        android:minWidth="120dp"
+        android:padding="15dp"
+        android:text="@string/outside"
+        android:textAlignment="center"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toStartOf="@+id/textView18"
+        app:layout_constraintStart_toEndOf="@+id/txt_agency"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_view" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:onClick="@{(v)->fragment.onRoadAssistantClick(v)}"
+        android:background="@{viewModel.selectedOption==3?@drawable/bg_garage_option_selection:@drawable/bg_garage_option_unselection}"
+        android:textColor="@{viewModel.selectedOption==3?@color/white:@color/colorPrimary}"
+        android:fontFamily="@font/dmsans_medium"
+        android:minWidth="120dp"
+        android:padding="15dp"
+        android:text="@string/road_assistant"
+        android:textAlignment="center"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txt_outside" />
+
+    <EditText
+        android:id="@+id/edt_serach"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:drawableEnd="@drawable/ic_baseline_search_24"
+        android:hint="@string/nationality"
+        android:textColor="@color/colorPrimary"
+        android:maxLines="1"
+        android:theme="@style/claim_spinner"
+        android:singleLine="true"
+        android:text="@={viewModel.searchKey}"
+        app:layout_constraintEnd_toEndOf="@+id/textView18"
+        app:layout_constraintStart_toStartOf="@+id/txt_agency"
+        app:layout_constraintTop_toBottomOf="@+id/txt_outside" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_garage_list"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/edt_serach"
+        app:layout_constraintStart_toStartOf="@+id/edt_serach"
+        app:layout_constraintTop_toBottomOf="@+id/edt_serach" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

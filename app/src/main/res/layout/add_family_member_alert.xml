@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_margin="@dimen/diemn_10"
+    android:padding="5dp"
+
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dimen_16"
+        android:background="@drawable/white_curve"
+        android:elevation="@dimen/diemn_10"
+
+        android:padding="@dimen/diemn_10"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5"
+                android:fontFamily="@font/dmsans_bold"
+                android:text="Add Family Details"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/dimen_16" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/editTextWhiteBg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/editTextWhiteBg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Family Name" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textInputLayout3"
+                    android:layout_height="wrap_content"           android:layout_width="match_parent"
+                    android:textSize="12dp"
+
+                    android:fontFamily="@font/dmsans_reguler"
+                    android:textColor="@color/colorPrimary"
+                    android:text="@string/relation" />
+
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:theme="@style/spinnerStyle" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/black" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical"
+                >
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/date_of_birth"
+                    android:fontFamily="@font/dmsans_reguler"
+                    android:textColor="@color/colorPrimary"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/editTextTime"
+                        style="@style/editText_no_margin_white"
+                        android:layout_width="60dp"
+                        android:layout_marginRight="@dimen/margin_item"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:layout_gravity="right"
+                        android:hint="@string/mm"
+                        android:inputType="time" />
+
+                    <EditText
+                        android:id="@+id/editTextDate"
+                        style="@style/editText_no_margin_white"
+                        android:layout_marginRight="@dimen/margin_item"  android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="@string/dd"
+                        android:inputType="date" />
+
+                    <EditText
+                        android:id="@+id/editTextDate2"
+                        style="@style/editText_no_margin_white"
+                        android:layout_marginRight="@dimen/margin_item"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="@string/yyyy"
+                        android:inputType="date" />
+                </LinearLayout>
+            </LinearLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/editTextWhiteBg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    style="@style/editTextWhiteBg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Department" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/dimen_16"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+android:layout_margin="2dp"
+                android:layout_weight="1"
+
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:background="@drawable/button_margin_primary_bg_white"
+                    android:text="Cancel"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/dmsans_bold"
+                    android:padding="15dp"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorPrimary"
+                    tools:ignore="HardcodedText" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+android:layout_margin="2dp"
+                android:layout_weight="1"
+                android:gravity="right|center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:src="@drawable/ic_delete_btn"
+                    android:background="@drawable/button_margin_white_bg"
+                    android:layout_height="wrap_content"
+                    android:text="SAVE"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:fontFamily="@font/dmsans_bold"
+                    android:padding="15dp"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

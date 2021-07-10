@@ -1,0 +1,68 @@
+package com.ilaftalkful.mobileonthego.model
+
+import androidx.databinding.BaseObservable
+import com.google.gson.annotations.SerializedName
+
+data class MotorClaim(val name:String?="Motor Claim") :BaseObservable(){
+
+    @SerializedName ("MotorClaimID")
+    var motorClaimID:String?=null
+    @SerializedName ("MotorPolicyID")
+    var motorPolicyID:String?=null
+    @SerializedName ("MotorPolicyNo")
+    var motorPolicyNo:String?=null
+    @SerializedName ("AccidentDate")
+    var accidentDate:String?=null
+    @SerializedName ("PoliceReportNumber")
+    var policeReportNumber:String?=null
+    @SerializedName ("VehicleRegistrationNumber")
+    var vehicleRegistrationNumber:String?=null
+    @SerializedName ("OwnerCivilIDNumber")
+    var ownerCivilIDNumber:String?=null
+    @SerializedName ("DriverDriverIDNumber")
+    var driverDriverIDNumber:String?=null
+    @SerializedName ("DriverCivilIDNumber")
+    var driverCivilIDNumber:String?=null
+    @SerializedName ("AccidentDescription")
+    var accidentDescription:String?=null
+    @SerializedName ("ClaimStatusID")
+    var claimStatusID:Int?=null
+    @SerializedName ("CreatedOn")
+    var createdOn:String?=null
+    @SerializedName ("CreatedBy")
+    var createdBy:Int?=null
+    @SerializedName ("IsActive")
+    var isActive:Int?=null
+    @SerializedName ("MotorClaimAttachmentID")
+    var motorClaimAttachmentID:Int?=null
+    @SerializedName ("PoliceReportFileName")
+    var policeReportFileName:String?=null
+    @SerializedName ("VehicleRegistrationFileName")
+    var vehicleRegistrationFileName:String?=null
+    @SerializedName ("OwnerCivilIDFileName")
+    var ownerCivilIDFileName:String?=null
+    @SerializedName ("DriverCivilIDFileName")
+    var driverCivilIDFileName:String?=null
+    @SerializedName ("DrivingLicenseFileName")
+    var drivingLicenseFileName:String?=null
+    @SerializedName ("MotorPolicyFileName")
+    var motorPolicyFileName:String?=null
+    @SerializedName ("FrontSideFileName")
+    var frontSideFileName:String?=null
+    @SerializedName ("RearSideFileName")
+    var rearSideFileName:String?=null
+    @SerializedName ("DriverSideFileName")
+    var driverSideFileName:String?=null
+    @SerializedName ("PassengerSideFileName")
+    var passengerSideFileName:String?=null
+    @SerializedName ("AccidentSiteFileName")
+    var accidentSiteFileName:String?=null
+    @SerializedName ("FullViewFileName")
+    var fullViewFileName:String?=null
+    @SerializedName ("FrontBumperFileName")
+    var frontBumperFileName:String?=null
+    @SerializedName ("RearBumperFileName")
+    var rearBumperFileName:String?=null
+    @SerializedName ("VoiceNoteFileName")
+    var voiceNoteFileName:String?=null
+}

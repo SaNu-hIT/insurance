@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.ilaftalkful.mobileonthego.viewmodel.RegisterViewModel" />
+
+        <variable
+            name="fragment"
+            type="com.ilaftalkful.mobileonthego.view.register.RegisterFragment" />
+
+        <variable
+            name="errors"
+            type="com.ilaftalkful.mobileonthego.model.UserRegistrationErrors" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/toolbar_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_main"
+            android:layout_marginTop="@dimen/margin_main"
+            android:layout_marginRight="@dimen/margin_main"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/dmsans_bold"
+                android:padding="10dp"
+                android:text="@string/create_account"
+                android:textColor="@color/white"
+                android:textSize="18dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/txt_en"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/txt_en"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@{viewModel.isENS?@drawable/bg_language:null}"
+                android:fontFamily="@font/dmsans_bold"
+                android:gravity="center"
+                android:onClick="@{(v)->fragment.onEnglishClicked(v)}"
+                android:padding="10dp"
+                android:text="@string/en"
+                android:textColor="@{viewModel.isENS?@color/black:@color/white}"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/txt_ar"
+
+
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txt_ar"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@{(!viewModel.isENS)?@drawable/bg_language:null}"
+                android:fontFamily="@font/dmsans_bold"
+                android:gravity="center"
+                android:onClick="@{(v)->fragment.onArabicClicked(v)}"
+                android:padding="10dp"
+                android:text="@string/ar"
+                android:textColor="@{(!viewModel.isENS)?@color/black:@color/white}"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar_view"
+            tools:context=".MainActivity">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_main"
+                    android:layout_marginTop="@dimen/margin_main"
+                    android:layout_marginRight="@dimen/margin_main"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textInputLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="@color/text_color"
+                        android:theme="@style/Theme.App.Base"
+                        app:errorText="@{errors.nameError}"
+                        app:errorTextColor="@color/error_color"
+                        app:errorIconTint="@color/error_color"
+                        app:hintTextColor="@color/text_color">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_name"
+                            android:drawablePadding="5dp"
+                            android:gravity="center|start"
+                            android:hint="@string/enter_your_name"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:text="@={viewModel.name}"
+                            android:inputType="textCapWords"
+                            android:textColor="@color/white" >
+                            <requestFocus />
+                        </com.google.android.material.textfield.TextInputEditText>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textInputLayout3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="@color/text_color"
+                        android:theme="@style/Theme.App.Base"
+                        app:errorText="@{errors.userEmailError}"
+                        app:errorTextColor="@color/error_color"
+                        app:errorIconTint="@color/error_color"
+                        app:hintTextColor="@color/text_color">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_baseline_email_24"
+                            android:drawableLeft="@drawable/ic_baseline_email_24"
+                            android:drawablePadding="5dp"
+                            android:hint="@string/email"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:text="@={viewModel.email}"
+                            android:textColor="@color/white" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textInputLayout_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="@color/text_color"
+                        android:theme="@style/Theme.App.Base"
+                        app:errorText="@{errors.confirmError}"
+                        app:hintTextColor="@color/text_color"
+                        app:errorTextColor="@color/error_color"
+                        app:errorIconTint="@color/error_color"
+                        app:passwordToggleEnabled="true"
+                        app:passwordToggleTint="@color/white">
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_baseline_lock_24"
+                            android:drawablePadding="5dp"
+                            android:gravity="center|start"
+
+                            android:hint="@string/password"
+                            android:inputType="textPassword"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:text="@={viewModel.password}"
+                            android:textColor="@color/white" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textInputLayout_conf_password"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="@color/text_color"
+                        android:theme="@style/Theme.App.Base"
+                        app:errorText="@{errors.passwordError}"
+                        app:errorTextColor="@color/error_color"
+                        app:errorIconTint="@color/error_color"
+                        app:hintTextColor="@color/text_color"
+                        app:passwordToggleEnabled="true"
+                        app:passwordToggleTint="@color/white">
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_baseline_lock_24"
+                            android:drawablePadding="5dp"
+                            android:gravity="center|start"
+                            android:hint="@string/conf_password"
+                            android:inputType="textPassword"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:text="@={viewModel.confPassword}"
+                            android:textColor="@color/white" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="16dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+                        <!-- <EditText
+                             android:id="@+id/textView6"
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:drawableLeft="@drawable/ic_mobile_number"
+                             style="@style/login_style"
+                             android:textColor="@color/white"
+                             android:maxLength="5"
+                             android:minWidth="50dp"
+                             android:text="+965"
+                             android:enabled="false"
+                             app:layout_constraintStart_toStartOf="parent"
+                             android:entries="@array/countryCodes"
+                             tools:ignore="MissingConstraints"
+                             />-->
+                        <Spinner
+                            android:id="@+id/spinner_view"
+                            style="@style/Base.Widget.AppCompat.Spinner.Underlined"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:clickable="false"
+                            android:entries="@array/countryCodes"
+                            android:theme="@style/ThemeSpinner"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/textInputLayout4"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:textColorHint="@color/text_color"
+                            android:theme="@style/Theme.App.Base"
+                            app:errorText="@{errors.phoneNumberError}"
+                            app:hintTextColor="@color/text_color"
+                            app:errorTextColor="@color/error_color"
+                            app:errorIconTint="@color/error_color"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/spinner_view"
+                            app:layout_constraintTop_toTopOf="parent">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/ed_phone_number"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/enter_your_mobile_number"
+                          android:maxLength="9"
+                                android:inputType="phone"
+                                android:maxLines="1"
+                                android:singleLine="true"
+                                android:text="@={viewModel.phonenumber}"
+                                android:textColor="@color/white" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/dmsans_reguler"
+                            android:text="@string/date_of_birth"
+                            android:textColor="@color/text_color" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="16dp"
+                            android:orientation="horizontal">
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColorHint="@color/text_color"
+                                android:theme="@style/Theme.App.Base"
+                                app:errorText="@{errors.dobError}"
+                                app:errorTextColor="@color/error_color"
+                                app:errorIconTint="@color/error_color"
+                                app:hintTextColor="@color/text_color">
+
+                            <EditText
+                                android:id="@+id/editTextTime"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ems="10"
+                                android:drawableStart="@drawable/ic_calender"
+                      android:cursorVisible="false"        android:focusable="false"
+                                android:longClickable="false"
+                                android:inputType="time"
+                      android:maxLines="1"
+                                android:onClick="@{(v)->fragment.onDateClicked(v)}"
+                                android:singleLine="true"
+                                android:text="@={viewModel.dd}"
+                                android:textAlignment="textStart"
+                                android:textColor="@color/white"
+                            android:clickable="true"
+                                android:editable="false"
+                                android:theme="@style/login_style" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="vertical"
+
+                        >
+
+                        <TextView
+                            android:id="@+id/textView8"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/dmsans_reguler"
+                            android:text="@string/gender"
+                            android:textColor="@color/text_color" />
+
+                        <RadioGroup
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="16dp"
+                            android:onCheckedChanged="@{fragment.onSplitTypeChanged}"
+                            android:orientation="horizontal">
+                            <!--                        android:checked="@{viewModel.gender.equals()}"-->
+                            <RadioButton
+                                android:id="@+id/radioButton2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/male"
+                                android:textColor="@color/white" />
+
+                            <RadioButton
+                                android:id="@+id/radioButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/female"
+                                android:textColor="@color/white" />
+                        </RadioGroup>
+                    </LinearLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textInputLayout5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        app:errorText="@{errors.civilidError}"
+                        android:textColorHint="@color/text_color"
+                        app:errorTextColor="@color/error_color"
+                        app:errorIconTint="@color/error_color"
+                        android:theme="@style/Theme.App.Base"
+                        app:hintTextColor="@color/text_color">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_baseline_speaker_notes_24"
+                            android:drawableLeft="@drawable/ic_baseline_speaker_notes_24"
+                            android:drawablePadding="5dp"
+                            android:hint="@string/civil_id"
+                 android:maxLength="12"           android:inputType="number"
+                            android:maxLines="1"
+                            android:singleLine="true"
+                            android:text="@={viewModel.civilid}"
+                            android:textColor="@color/white" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/margin_main"
+                        android:gravity="center"
+
+                        android:orientation="horizontal">
+
+
+                        <ImageView
+                            android:id="@+id/textView9"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:src="@drawable/ic_fingerprint_btn_white" />
+
+                        <TextView
+                            android:id="@+id/textView10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8dp"
+                            android:layout_weight="1"
+                            android:text="@string/login_fingerprint_face_id"
+                            android:textColor="@color/white" />
+
+                        <androidx.appcompat.widget.SwitchCompat
+                            android:id="@+id/switch1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:checked="@={viewModel.isChecked()}" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/button3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="20dp"
+                        android:alpha="@{errors.uiUpdate ? 0.3f : 1.0f}"
+                        android:enabled="@{viewModel.isValid}"
+                        android:onClick="@{(v)->fragment.onRegisterClicked(v,errors)}"
+                        android:padding="15dp"
+                        android:text="@string/register"
+                        android:theme="@style/AccentButton"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:layout_editor_absoluteY="602dp" />
+
+                    <TextView
+                        android:id="@+id/textView11"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="20dp"
+                        android:fontFamily="@font/dmsans_reguler"
+                        android:gravity="center"
+                        android:text="@string/already_have_an_account"
+                        android:textColor="@color/white"
+                        app:layout_constraintBottom_toTopOf="@+id/textView12"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView12"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="25dp"
+                        android:fontFamily="@font/dmsans_medium"
+                        android:gravity="center"
+                        android:onClick="@{(v)->fragment.onLoginClicked(v)}"
+                        android:padding="10dp"
+                        android:text="@string/login"
+                        android:textColor="@color/white"
+                        android:textSize="18dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>
